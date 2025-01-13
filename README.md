@@ -114,3 +114,39 @@ Effectuez la même génération qu'en 2.2.5, mais sous format d'un fichier SVG d
 
 ### 2.2.7	Génération d'un BMP (fichier)
 Effectuez la même génération qu'en 2.2.5, mais sous format d'un fichier BMP d'un nom choisi par l'utilisateur (donc via la classe `BMPgenerateurFichier`).
+
+# Annexes
+
+## A1  Format SVG
+Le format SVG est un format simple vectoriel basé sur XML. Il permet, via des consignes textuelles lisibles par l'humain, d'afficher des formes.
+
+Un exemple de XML contenant tous les éléments dont vous auriez besoin est donné ci-dessous :
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="200">
+  <line x1="5" y1="5" x2="250" y2="95" stroke="red" />
+  <circle cx="90" cy="80" r="50" fill="blue" />
+  <polygon points="100,100 150,25 150,75 200,0" fill="none" stroke="black" />
+</svg>
+```
+
+## A2  Format BMP
+
+
+
+## A3  Rappel : boucle sur objets héritant d'une classe abstraite
+Pour rappel, si vous conservez une liste (sous forme de `std::vector` par exemple) d'objets héritant d'une classe abstraite, vous devez conserver des pointeurs et non des objets littéraux. Un exemple valide est fourni ci-dessous (où `IntStr` et `BooStr` sont toutes deux des classes héritant de `AbsStr`) :
+
+```cpp
+std::vector<AbsStr*> rs = {};
+BooStr* b = new BooStr();
+IntStr* i = new IntStr();
+b->demander();
+i->demander();
+rs.push_back(b);
+rs.push_back(i);
+for (AbsStr* x : rs) {
+    std::cout << x->getVal() << std::endl;
+}
+```

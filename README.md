@@ -138,8 +138,8 @@ Un exemple de XML contenant tous les éléments dont vous auriez besoin est donn
 Vous pouvez tester SVG aisément dans n'importe quel navigateur. Créez un fichier `.svg` (assurez-vous bien que l'extension soit `.svg`), collez-y votre code SVG, puis ouvrez votre fichier dans votre navigateur (en cliquant / glissant ou via `Ctrl+O`).
 
 
-## A2  Format BMP
-
+## A2  Librairies BMP
+Les [sources](https://github.com/esirem-chassel/polytech-dijon-3a-cpp/blob/main/bitmap.cpp) et [headers](https://github.com/esirem-chassel/polytech-dijon-3a-cpp/blob/main/bitmap.h) pour la manipulation des fichiers BMP sont présents dans [le dépôt github ici même](https://github.com/esirem-chassel/polytech-dijon-3a-cpp).
 
 
 ## A3  Rappel : boucle sur objets héritant d'une classe abstraite

@@ -141,6 +141,7 @@ Vous pouvez tester SVG aisément dans n'importe quel navigateur. Créez un fichi
 ## A2  Librairies BMP
 Les [sources](https://github.com/esirem-chassel/polytech-dijon-3a-cpp/blob/main/bitmap.cpp) et [headers](https://github.com/esirem-chassel/polytech-dijon-3a-cpp/blob/main/bitmap.h) pour la manipulation des fichiers BMP sont présents dans [le dépôt github ici même](https://github.com/esirem-chassel/polytech-dijon-3a-cpp).
 
+Vous ne devez **__pas__** modifier ces fichiers mais simplement les ajouter à votre projet et les utiliser dans votre code !
 
 ## A3  Rappel : boucle sur objets héritant d'une classe abstraite
 Pour rappel, si vous conservez une liste (sous forme de `std::vector` par exemple) d'objets héritant d'une classe abstraite, vous devez conserver des pointeurs et non des objets littéraux. Un exemple valide est fourni ci-dessous (où `IntStr` et `BooStr` sont toutes deux des classes héritant de `AbsStr`) :

@@ -3,9 +3,9 @@ Les documents, l'accès à Internet et l'usage des postes personnels est autoris
 
 **La lecture intégrale du sujet est nécessaire avant de commencer à développer.**
 
-La partie 1 consiste en une explication du flux global de l'application – il ne s'agit __pas__ des consignes de développement, mais d'une réflexion sur l'exécution coté utilisateur.
+La [partie 1](https://github.com/esirem-chassel/polytech-dijon-3a-cpp/blob/main/README.md#10objectif) consiste en une explication du flux global de l'application – il ne s'agit __pas__ des consignes de développement, mais d'une réflexion sur l'exécution coté utilisateur.
 
-La partie 2 décrit les classes nécessaires, ainsi que les tests à réaliser. C'est cette partie qui spécifie quoi développer.
+La [partie 2](https://github.com/esirem-chassel/polytech-dijon-3a-cpp#20d%C3%A9tail-des-attendus) décrit les classes nécessaires, ainsi que les tests à réaliser. C'est cette partie qui spécifie quoi développer.
 
 Les annexes précisent différentes aides et consignes en lien avec l'épreuve.
 
@@ -13,7 +13,7 @@ Il est important que vous travailliez en suivant une logique incrémentale : dé
 
 Le résultat attendu doit être placé dans un dépôt github nommé `polytech-dijon-3a-cpp` privé, avec ajout en collaborateurs suivants : `esirem-chassel` et `cmeunier-ub`.
 
-Un makefile ou un cmakelist doit être présent, valide et configuré pour générer l'exécutable final (nommé `tracer`) dans un dossier nommé `final`.
+Un makefile ou un cmakelist doit être présent, valide et configuré pour générer l'exécutable final (nommé `tracer`) dans un dossier nommé `final`. Le versionning des binaires n'est pas souhaité.
 
 # 1.0	Objectif
 L'objectif est de réaliser une application console capable de réaliser des tracés dans un format d'image, à partir de consignes données.
@@ -86,12 +86,13 @@ La classe `Couleur` permet de représenter une couleur sous format RGB (rouge, v
 La classe `Generateur` est une classe abstraite définissant la méthode `generer()` prenant en argument une zone de tracé.
 
 ### 2.1.9	Classe BMPgenerateur
-La classe `BMPgenerateur` permet la génération d'un fichier BMP. Le nom du fichier BMP sera demandé à l'utilisateur. Attention à vérifier que le nom saisi génère un fichier dans le dossier courant. Cette classe va logiquement utiliser la librairie de génération BMP fournie en Annexe A2.
+La classe `BMPgenerateur` permet la génération d'un fichier BMP. Le nom du fichier BMP sera demandé à l'utilisateur. Attention à vérifier que le nom saisi génère un fichier dans le dossier courant. Cette classe va logiquement utiliser la librairie de génération BMP fournie en [Annexe A2](https://github.com/esirem-chassel/polytech-dijon-3a-cpp#a2--format-bmp).
 
 Note : il n'existe pas de transparence en BMP – on considérera la couleur de fond de la zone de tracé comme étant la couleur "transparente". Si la couleur de fond de la zone de tracé n'est pas spécifiée, on considérera du blanc.
 
 ### 2.1.10	Classe SVGgenerateur (et enfants)
 La classe `SVGgenerateur` est une classe permettant la génération sous format SVG. C'est une classe parente de `SVGgenerateurFichier` et `SVGgenerateurTexte`. Le premier effectue une génération d'un fichier SVG. Le second effectue une génération d'une chaîne SVG qui sera affichée dans la console.
+Le fonctionnement de SVG est rapidement expliqué en [Annexe A1](https://github.com/esirem-chassel/polytech-dijon-3a-cpp#a1--format-svg).
  
 ## 2.2	Tests
 ### 2.2.1	Tracé d'une ligne
@@ -101,18 +102,21 @@ Effectuez la génération d'une droite entre les coordonnées (5, 5) et (5, 10) 
 Effectuez la génération de trois lignes aux coordonnées ((10, 10), (10, 40)), ((10, 40), (40, 40)) et ((40, 40), (40, 10)) de couleur noir sur fond transparent. Afficher, en console, la zone (avec ses formes).
 
 ### 2.2.3	Tracé de trois lignes en SVG (texte)
-Effectuez le tracé du 2.2.2 et affichez le résultat sous forme SVG.
+Effectuez le tracé du 2.2.2 et affichez le résultat sous forme SVG textuel (donc via la classe `SVGgenerateurTexte`).
 
 ### 2.2.4	Tracé d'un cercle noir sur blanc
 Effectuez la génération d'un cercle de centre (4, 4) et de rayon 3, dans une zone de tracé de 10 sur 10. Le cercle sera noir avec un remplissage bleu. Afficher, en console, la zone (avec ses formes).
 
-### 2.2.5	Génération d'un SVG textuel
-Effectuez la génération des formes nécessaires pour tracer "LEOPOLD" sur un canvas de largeur 500 sur hauteur 200. Les lettres L seront en rouge, les lettres O seront en vert sur fond jaune, et les autres lettres seront en noir sur fond "transparent". Le résultat attendu est la génération d'un SVG textuel (donc via la classe SVGgenerateurTexte). Vous pouvez tester le SVG en l'enregistrant dans un fichier SVG manuellement sur votre bureau et en l'ouvrant dans votre navigateur. Un bonus sera ajouté si les lettres P et D utilisent des polygones (et non des droites). Les O doivent être des cercles.
+### 2.2.5	Tracé de trois lignes en SVG (texte)
+Effectuez le tracé du 2.2.4 et affichez le résultat sous forme SVG textuel (donc via la classe `SVGgenerateurTexte`).
 
-### 2.2.6	Génération d'un SVG (fichier)
+### 2.2.6	Génération d'un SVG textuel
+Effectuez la génération des formes nécessaires pour tracer "LEOPOLD" sur un canvas de largeur 500 sur hauteur 200. Les lettres L seront en rouge, les lettres O seront en vert sur fond jaune, et les autres lettres seront en noir sur fond "transparent". Le résultat attendu est la génération d'un SVG textuel (donc via la classe `SVGgenerateurTexte`). Un bonus sera ajouté si les lettres P et D utilisent des polygones (et non des droites). Les O doivent être des cercles.
+
+### 2.2.7	Génération d'un SVG (fichier)
 Effectuez la même génération qu'en 2.2.5, mais sous format d'un fichier SVG d'un nom choisi par l'utilisateur (donc via la classe `SVGgenerateurFichier`).
 
-### 2.2.7	Génération d'un BMP (fichier)
+### 2.2.8	Génération d'un BMP (fichier)
 Effectuez la même génération qu'en 2.2.5, mais sous format d'un fichier BMP d'un nom choisi par l'utilisateur (donc via la classe `BMPgenerateurFichier`).
 
 # Annexes
@@ -130,6 +134,9 @@ Un exemple de XML contenant tous les éléments dont vous auriez besoin est donn
   <polygon points="100,100 150,25 150,75 200,0" fill="none" stroke="black" />
 </svg>
 ```
+
+Vous pouvez tester SVG aisément dans n'importe quel navigateur. Créez un fichier `.svg` (assurez-vous bien que l'extension soit `.svg`), collez-y votre code SVG, puis ouvrez votre fichier dans votre navigateur (en cliquant / glissant ou via `Ctrl+O`).
+
 
 ## A2  Format BMP
 

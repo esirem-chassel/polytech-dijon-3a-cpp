@@ -1,5 +1,7 @@
 # Consignes
-Les documents, l'accès à Internet et l'usage des postes personnels est autorisé. __L'usage d'outils d'intelligence artificielle (Copilot compris) est interdit.__
+Les documents, l'accès à Internet et l'usage des postes personnels est autorisé.
+__L'usage d'outils d'intelligence artificielle (Copilot compris) est interdit.__
+__Toute communication avec des personnes extérieures ou des stockages externes en vue d'échanger des informations est interdite.__
 
 **La lecture intégrale du sujet est nécessaire avant de commencer à développer.**
 

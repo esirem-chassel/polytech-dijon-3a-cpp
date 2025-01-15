@@ -15,7 +15,10 @@ Il est important que vous travailliez en suivant une logique incrémentale : dé
 
 Le résultat attendu doit être placé dans un dépôt github nommé `polytech-dijon-3a-cpp` privé, avec ajout en collaborateurs suivants : `esirem-chassel` et `cmeunier-ub`.
 
-Un makefile ou un cmakelist doit être présent, valide et configuré pour générer l'exécutable final (nommé `tracer`) dans un dossier nommé `final`. Le versionning des binaires n'est pas souhaité.
+Un makefile ou un cmakelist doit être présent, valide et configuré pour générer l'exécutable final (nommé `tracer`) dans un dossier nommé `final`.
+
+> [!WARNING]
+> Le versionning des binaires n'est pas souhaité.
 
 # 1.0	Objectif
 L'objectif est de réaliser une application console capable de réaliser des tracés dans un format d'image, à partir de consignes données.
@@ -40,8 +43,9 @@ Une fois que l'utilisateur arrête de tracer des formes et souhaite générer un
 # 2.0	Détail des attendus
 En plus des attendus demandés, vous pouvez ajouter autant de classes, méthodes, propriétés et variables que nécessaire. Il est attendu un respect des bonnes pratiques (encapsulation, moindre responsabilité…).
 
-**ATTENTION** : choisissez judicieusement l'ordre de réalisation de vos classes.
-__Il est conseillé de commencer par les classes Droite et SVGgenerateurTexte (ainsi que des classes nécessaires pour ces deux classes)__.
+> [!IMPORTANT]
+> **ATTENTION** : choisissez judicieusement l'ordre de réalisation de vos classes.
+> __Il est conseillé de commencer par les classes Droite et SVGgenerateurTexte (ainsi que des classes nécessaires pour ces deux classes)__.
 
 ## 2.1	Classes
 
@@ -160,3 +164,105 @@ for (AbsStr* x : rs) {
     std::cout << x->getVal() << std::endl;
 }
 ```
+
+## A4 Gestion des exceptions
+
+### A4.1. Lancer une exception : throw
+
+Une exception est levée avec l’instruction `throw` suivie d’une valeur ou d’un objet :
+
+```c++
+throw 42;  // Lance un entier
+throw std::exception("Une erreur s'est produite"); // Lance un objet d'exception
+```
+
+### A4.2 Capturer une exception : try et catch
+
+Les blocs `try` et `catch` permettent de capturer et de traiter les exceptions levées.
+
+```c++
+try 
+{
+    // Code susceptible de lever une exception
+}
+catch (const std::exception& exception) 
+{
+    // Traitement de l’exception
+}
+```
+
+Plusieurs blocs `catch` peuvent être chaînés pour traiter différents types d’exceptions :
+
+```c++
+try 
+{
+    // Code susceptible de lever une exception
+} 
+catch (int exception) 
+{
+    std::cout << "Exception int : " << e << std::endl;
+} 
+catch (const std::exception& exception) 
+{
+    std::cout << "Exception std : " << e.what() << std::endl;
+}
+```
+
+### A4.3. Exceptions personnalisées
+
+Il est possible de définir ses propres exceptions en dérivant de `std::exception` :
+
+```c++
+class MyException : public std::exception {
+public:
+    const char* what() const noexcept override {
+        return "Mon exception personnalisée";
+    }
+};
+
+throw MyException();
+```
+
+## A5 Fichiers texte
+
+La manipulation des fichiers texte en C++ est réalisée à l’aide de la bibliothèque standard `fstream`. 
+
+### A5.1. Inclure la bibliothèque appropriée
+
+Pour travailler avec des fichiers, incluez la bibliothèque `fstream` :
+
+```c++
+#include <fstream>
+```
+
+### A5.2. Création et ouverture d'un fichier
+
+La classe `std::ofstream` permet d’écrire dans des fichiers :
+
+```c++
+std::ofstream fichier("exemple.txt");
+if (!fichier) 
+{
+    // La fichier n'a pas pu être overt
+}
+```
+> [!IMPORTANT]
+> **Toujours vérifier que le fichier est bien ouvert avant d'écrire dedans.**
+
+### A5.3. Écriture dans le fichier
+
+Utilisez l’opérateur `<<` pour écrire des données dans un fichier :
+
+```c++
+fichier << "Une nouvelle ligne dans le fichier !" << std::endl;
+```
+
+### A5.4. Fermeture du fichier
+
+Il est important de fermer le fichier une fois l’écriture terminée pour s’assurer que toutes les données sont correctement enregistrées :
+
+```c++
+fichier.close();
+```
+
+Note : Le destructeur de `std::ofstream` ferme automatiquement le fichier si vous oubliez de le faire explicitement.
